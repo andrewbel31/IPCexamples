@@ -7,7 +7,6 @@ import android.content.Intent
 class MyReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
-        TODO("MyReceiver.onReceive() is not implemented")
+        ProcessHelper.logProcessName(this)
     }
 }

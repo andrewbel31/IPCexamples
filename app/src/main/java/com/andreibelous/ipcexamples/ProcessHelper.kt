@@ -4,6 +4,7 @@ import android.app.Application
 import android.os.Build
 import android.os.Process
 import android.os.StrictMode
+import android.util.Log
 import java.io.BufferedReader
 import java.io.FileReader
 
@@ -45,6 +46,13 @@ object ProcessHelper {
 
             return@runCatching processName
         }.getOrNull()
+    }
+
+    fun logProcessName(parent: Any) {
+        Log.d(
+            "ProcessHelper1",
+            "process name for $parent is $currentProcessFullName"
+        )
     }
 
 }

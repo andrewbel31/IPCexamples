@@ -6,23 +6,33 @@
 
         <activity
             android:name=".MainActivity"
-            android:process=":child1" />
+            android:exported="true"
+            android:process=":child1"
+            android:theme="@style/Theme.IPCExamples">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <service
             android:name=".MyService"
+            android:exported="false"
             android:process=":child2" />
 
         <provider
             android:name=".MyContentProvider"
             android:authorities="com.andreibelous.ipcexample"
-            android:exported="true"
+            android:enabled="true"
+            android:exported="false"
             android:process=":child3" />
 
         <receiver
             android:name=".MyReceiver"
             android:enabled="true"
+            android:exported="false"
             android:process=":child4" />
-
-
     </application>
 </manifest>
