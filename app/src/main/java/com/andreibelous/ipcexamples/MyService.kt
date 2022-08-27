@@ -2,14 +2,15 @@ package com.andreibelous.ipcexamples
 
 import android.app.Service
 import android.content.Intent
+import android.content.res.AssetFileDescriptor
 import android.os.IBinder
 
 class MyService : Service() {
 
-    override fun onBind(intent: Intent): IBinder? = null
+    override fun onBind(intent: Intent): IBinder =
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        ProcessHelper.logProcessName(this)
-        return super.onStartCommand(intent, flags, startId)
-    }
+        object : IFileDescriptor.Stub() {
+            override fun file(): AssetFileDescriptor =
+                resources.openRawResourceFd(R.raw.london)
+        }
 }
